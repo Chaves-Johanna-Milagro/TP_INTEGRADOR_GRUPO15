@@ -18,6 +18,10 @@ private class Jugador extends GameObject implements IController{
   
   }
   
+  public void readCommand(){
+  
+  }
+  
   //Control cuando jugador come una fruta
   public void frutaComida(Fruta fruta){
   
@@ -25,6 +29,8 @@ private class Jugador extends GameObject implements IController{
   
   //Control cuando jugador come un agua
   public void aguaComida(Agua agua){
-  
+
   }
+  
+  
 }

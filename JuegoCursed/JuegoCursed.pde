@@ -10,10 +10,15 @@ private int estado;
 public void setup(){
   size(600,600);
   background(0);
+  
+  fondo=new Fondo();
 
 }
 
 public void draw(){
+  
+  //Muestra pantalla de inicio provisional
+  fondo.display();
 
 }
 
