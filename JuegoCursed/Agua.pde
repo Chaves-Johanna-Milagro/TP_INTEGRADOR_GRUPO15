@@ -1,14 +1,13 @@
 private class Agua extends GameObject{
-  private PVector posicion;
+
   
   private int valor;
   private Collider collider;
-  private AnimadorComida awita;
+  private Animador awita;
   
   public Agua(PVector posicion){
-    this.posicion=posicion;
-    this.awita=new AnimadorComida(posicion.x,posicion.y);
-    this.awita.crearAnimacion(); 
+    this.awita=new Animador(posicion.x,posicion.y);
+    this.awita.crearAnimacion("spritesAgua.png"); 
     
   
   }

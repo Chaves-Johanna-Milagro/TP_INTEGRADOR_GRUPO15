@@ -2,13 +2,15 @@ private class Enemigo extends GameObject{
 
   private int velocidad;
   private Collider collider;
+  private Animador enemy;
   
-  public Enemigo(){
-  
+  public Enemigo(PVector posicion){
+    this.enemy=new Animador(posicion.x,posicion.y);
+    this.enemy.crearAnimacion("spritesEnemigo.png"); 
   }
   
   public void display(){
-  
+  enemy.updateAnimacion();
   }
   
   public void mover(){
