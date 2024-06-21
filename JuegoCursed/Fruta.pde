@@ -1,4 +1,4 @@
-private class Fruta extends GameObject{
+private class Fruta extends GameObject implements IVisualizable{
   
   private int valor;
   private Collider collider;

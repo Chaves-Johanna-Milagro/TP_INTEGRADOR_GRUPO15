@@ -1,4 +1,4 @@
-private class Jugador extends GameObject implements IController{
+private class Jugador extends GameObject implements IController, IVisualizable{
 
   private int vida;
   private int puntaje;

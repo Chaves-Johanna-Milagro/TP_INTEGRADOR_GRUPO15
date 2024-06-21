@@ -1,4 +1,4 @@
-private class Fondo extends GameObject{
+private class Fondo extends GameObject implements IVisualizable{
   
   private PImage fondo;
   

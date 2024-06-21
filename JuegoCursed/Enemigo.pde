@@ -1,4 +1,4 @@
-private class Enemigo extends GameObject{
+private class Enemigo extends GameObject implements IVisualizable{
 
   private int velocidad;
   private Collider collider;

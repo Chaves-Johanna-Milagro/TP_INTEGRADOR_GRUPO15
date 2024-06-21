@@ -1,4 +1,4 @@
-private class Agua extends GameObject{
+private class Agua extends GameObject implements IVisualizable{
 
   
   private int valor;
