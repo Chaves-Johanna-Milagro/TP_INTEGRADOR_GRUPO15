@@ -4,7 +4,7 @@ private class Fondo extends GameObject{
   
   public Fondo(){
     this.posicion=new PVector(0,0);
-    fondo = loadImage("pantallaInicio.png");
+    fondo = loadImage("fondo.png");
   }
   
   public void display(){

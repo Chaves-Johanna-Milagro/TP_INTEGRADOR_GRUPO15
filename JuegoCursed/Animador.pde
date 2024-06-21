@@ -8,22 +8,23 @@ class Animador{
   
   private int anchoSprite=32;   //ancho del frame del sprite
   private int altoSprite=32;  //alto del frame del sprite
-  private int numFrames=2;   //numero total de frames del sprite
+  private int numFrames;   //numero total de frames del sprite
   private int frameActual=0;  //ira actualizandose a medida de la cantidad de frames del sprite
   private int frameDelay=10;  //tiempo o retraso entre frames
   private int frameCount=0;  //contador de frames
   
   //constructor
-  public Animador(float x,float y){
+  public Animador(float x,float y,int numFrames){
     this.posicion=new PVector(x,y);
+    this.numFrames=numFrames;
   }
   
   //este obtendra los frames del sprite y sera inicializado indirectamente dentro del setup()
    public void crearAnimacion(String path){
      this.sprite=loadImage(path);
-     this.sprites=new PImage[numFrames];
+     this.sprites=new PImage[this.getNumFrames()];
      
-     for(int i=0;i<numFrames;i++){
+     for(int i=0;i<this.getNumFrames();i++){
      sprites[i]=sprite.get(i*anchoSprite,0,anchoSprite,altoSprite);
      }
    }
@@ -34,9 +35,15 @@ class Animador{
      image(this.sprites[frameActual],this.posicion.x,this.posicion.y,50,50);
      frameCount++;
   if(frameCount>=frameDelay){
-     frameActual=(frameActual+1)%numFrames;
+     frameActual=(frameActual+1)%this.getNumFrames();
      frameCount=0;
   }
    }
+   
+   public int getNumFrames(){
+   return numFrames;}
+   
+   public void setNumFrames(int numFrames){
+   this.numFrames=numFrames;}
 
 }

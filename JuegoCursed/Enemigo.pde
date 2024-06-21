@@ -5,7 +5,7 @@ private class Enemigo extends GameObject{
   private Animador enemy;
   
   public Enemigo(PVector posicion){
-    this.enemy=new Animador(posicion.x,posicion.y);
+    this.enemy=new Animador(posicion.x,posicion.y,2);//recibe la posicion y el numero de frames
     this.enemy.crearAnimacion("spritesEnemigo.png"); 
   }
   

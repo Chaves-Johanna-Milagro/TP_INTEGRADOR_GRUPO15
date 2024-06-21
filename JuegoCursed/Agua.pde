@@ -6,7 +6,7 @@ private class Agua extends GameObject{
   private Animador awita;
   
   public Agua(PVector posicion){
-    this.awita=new Animador(posicion.x,posicion.y);
+    this.awita=new Animador(posicion.x,posicion.y,2);//recibe la posicion y el numero de frames
     this.awita.crearAnimacion("spritesAgua.png"); 
     
   
