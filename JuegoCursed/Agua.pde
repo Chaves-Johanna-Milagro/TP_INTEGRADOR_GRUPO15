@@ -1,13 +1,14 @@
-private class Agua extends GameObject implements IVisualizable{
-
+private class Agua implements IVisualizable{
+  private Transform transform;
   
   private int valor;
   private Collider collider;
   private Animador awita;
   
-  public Agua(PVector posicion){
-    this.awita=new Animador(posicion.x,posicion.y,2);//recibe la posicion y el numero de frames
-    this.awita.crearAnimacion("spritesAgua.png"); 
+  public Agua(float x, float y){
+    this.transform=new Transform(x,y);
+    this.awita=new Animador(x,y,2);//recibe la posicion y el numero de frames
+    this.awita.crearAnimacion("spriteAgua.png"); 
     
   
   }
@@ -16,9 +17,5 @@ private class Agua extends GameObject implements IVisualizable{
    awita.updateAnimacion();
   }
   
-  public PVector getPosicion(){
-  return posicion;}
   
-  public void setPosicion(PVector posicion){
-  this.posicion=posicion;}
 }

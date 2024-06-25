@@ -1,11 +1,12 @@
-private class Enemigo extends GameObject implements IVisualizable{
-
+private class Enemigo implements IVisualizable{
+  private Transform transform;
   private int velocidad;
   private Collider collider;
   private Animador enemy;
   
-  public Enemigo(PVector posicion){
-    this.enemy=new Animador(posicion.x,posicion.y,2);//recibe la posicion y el numero de frames
+  public Enemigo(float x, float y){
+    this.transform=new Transform(x,y);
+    this.enemy=new Animador(x,y,2);//recibe la posicion y el numero de frames
     this.enemy.crearAnimacion("spritesEnemigo.png"); 
   }
   

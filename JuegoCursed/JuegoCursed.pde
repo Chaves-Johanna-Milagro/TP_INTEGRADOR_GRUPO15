@@ -21,10 +21,10 @@ public void setup() {
   estado=StateMachine.INICIO;
 
   //pruebas de animacion
-  agua1=new Agua(new PVector(200, 200));
-  fruta1=new Fruta(new PVector(100, 100));
-  enemigo1=new Enemigo(new PVector(400, 400));
-  jugador=new Jugador(new PVector(100, 200), 10);
+  agua1=new Agua(200,200);
+  fruta1=new Fruta(100,100);
+  enemigo1=new Enemigo(400,400);
+  jugador=new Jugador(100,200, 10);
 }
 
 public void draw() {

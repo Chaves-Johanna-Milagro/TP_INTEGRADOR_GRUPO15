@@ -1,13 +1,14 @@
-private class Jugador extends GameObject implements IController, IVisualizable{
-
+private class Jugador implements IController, IVisualizable{
+  private Transform transform;
   private int vida;
   private int puntaje;
   private int velocidad;
   private Collider collider;
   private Animador jugador;
   
-  public Jugador(PVector posicion,int velocidad){
-  this.jugador=new Animador(posicion.x,posicion.y,4);//recibe la posicion y el numero de frames
+  public Jugador(float x, float y,int velocidad){
+    this.transform=new Transform(x,y);
+  this.jugador=new Animador(x,y,4);//recibe la posicion y el numero de frames
     this.jugador.crearAnimacion("spritesJugador.png"); 
     this.velocidad=velocidad;
   }
