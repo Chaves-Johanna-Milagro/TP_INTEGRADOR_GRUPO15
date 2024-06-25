@@ -1,10 +1,8 @@
-static class DeltaTime {
+static class Time {
   
-  static float getDeltaTime(float frame) {
-    
-    float deltaTime=0;//Se agregó esta variable para que el programa pueda ejecutarse, sino marca error
-    
-    return deltaTime;
-  
-  }
+  static float getDeltaTime(float frames){
+     int framesPorSegundo=round(frames);
+     float deltaTime=1.0/framesPorSegundo;
+     return deltaTime;
+ }
 }

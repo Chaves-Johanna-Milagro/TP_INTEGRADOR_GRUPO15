@@ -9,6 +9,7 @@ private class Fondo implements IVisualizable {
     fondo = loadImage("fondo.png");
   }
 
+  //metodo de dibujo
   public void display() {
     image(fondo,this.transform.getPosicion().x,this.transform.getPosicion().y);
 

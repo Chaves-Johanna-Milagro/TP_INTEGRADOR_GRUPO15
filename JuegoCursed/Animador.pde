@@ -40,6 +40,7 @@ class Animador{
   }
    }
    
+   //Setters y getters
    public int getNumFrames(){
    return numFrames;}
    
