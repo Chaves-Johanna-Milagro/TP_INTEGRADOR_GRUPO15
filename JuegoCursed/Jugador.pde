@@ -26,12 +26,12 @@ private class Jugador extends GameObject implements IController, IVisualizable{
   }
   
   //Control cuando jugador come una fruta
-  public void frutaComida(Fruta fruta){
+  public void comerFruta(Fruta fruta){
   
   }
   
   //Control cuando jugador come un agua
-  public void aguaComida(Agua agua){
+  public void comerAgua(Agua agua){
 
   }
    public int getVelocidad(){
