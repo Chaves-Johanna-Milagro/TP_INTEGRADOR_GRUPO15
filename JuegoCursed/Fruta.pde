@@ -10,11 +10,17 @@ private class Fruta implements IVisualizable{
     this.frutita=new Animador(x,y,2);//recibe la posicion y el numero de frames
     this.frutita.crearAnimacion("spriteFruta1.png"); 
   
+    this.collider=new Collider(16.0, this.transform.getPosicion());
   }
   
   //metodo de dibujo
   public void display(){
     frutita.updateAnimacion();
   
+  }
+  
+  //setters y getters
+  public Collider getCollider() {
+    return this.collider;
   }
 }

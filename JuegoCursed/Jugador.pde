@@ -85,7 +85,11 @@ private class Jugador implements IController, IVisualizable{
   
   //determinara si el jugador consume una fruta
   public void comer(Fruta fruta){
-  
+   boolean isCollide = this.collider.verificarColision(fruta.getCollider());
+
+    if (isCollide==true) {
+      estado=StateMachine.GANADO;
+    }
   }
   
   //le permitira al jugador disparar 

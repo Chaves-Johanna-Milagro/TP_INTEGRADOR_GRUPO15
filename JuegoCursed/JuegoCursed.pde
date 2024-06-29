@@ -48,6 +48,7 @@ public void draw() {
     enemigo1.atacaJugador(jugador);
     
     jugador.display();
+    jugador.comer(fruta1);
     break;
 
   case 3:
@@ -58,6 +59,7 @@ public void draw() {
     break;
 
   case 4:
+    println("GANASTE!");
     break;
   }
 }
