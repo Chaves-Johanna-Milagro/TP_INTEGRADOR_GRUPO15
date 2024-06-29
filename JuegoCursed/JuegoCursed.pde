@@ -24,7 +24,7 @@ public void setup() {
   agua1=new Agua(200,200);
   fruta1=new Fruta(100,100);
   enemigo1=new Enemigo(400,400);
-  jugador=new Jugador(100,200, 10);
+  jugador=new Jugador(100,100, 200);
 }
 
 public void draw() {
@@ -58,7 +58,20 @@ public void draw() {
 
 //Inputs de movimiento del jugador
 public void keyPressed() {
+  jugador.readCommand();
 }
 
 public void keyReleased() {
+  if (keyCode==UP) {
+    jugador.setUpPressed(false);
+  }
+  if (keyCode==DOWN) {
+    jugador.setDownPressed(false);
+  }
+  if (keyCode==RIGHT) {
+    jugador.setRightPressed(false);
+  }
+  if (keyCode==LEFT) {
+    jugador.setLeftPressed(false);
+  }
 }

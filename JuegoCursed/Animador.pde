@@ -47,4 +47,8 @@ class Animador{
    public void setNumFrames(int numFrames){
    this.numFrames=numFrames;}
 
+
+  public void setPosicion(float x,float y){
+    this.posicion.set(x,y);
+ }
 }
