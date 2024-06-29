@@ -25,12 +25,16 @@ private class Jugador implements IController, IVisualizable{
     
     this.imagen=loadImage("spritesJugador.png");
     this.estadoJugador=StateJugador.IDLE;//se establece el estado del jugador como "Quieto"
+    
+    this.collider=new Collider(16.0, this.transform.getPosicion());
   }
   
   //metodo de dibujo
   public void display(){
    
+    this.jugador.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y);//actualizacion de la posicion del sprite para que acompañe el movimiento
   
+    //Dependiendo el estado del jugador, el sprite estara quieto o en movimiento
     switch (this.estadoJugador){
       case 1:
         image(this.imagen.get(0,0,32,32), this.transform.getPosicion().x,this.transform.getPosicion().y,50,50);
@@ -47,22 +51,18 @@ private class Jugador implements IController, IVisualizable{
   public void mover(){
     if (rightPressed==true){
      this.transform.setPosicion(this.transform.getPosicion().x+velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);//actualizacion posicion del objeto
-     this.jugador.setPosicion(this.transform.getPosicion().x+velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);//actualizacion posicion del sprite
      this.estadoJugador=StateJugador.MOVIENDO;//se cambia el estado del jugador para activar la animacion del sprite
     }
     if (leftPressed==true){
       this.transform.setPosicion(this.transform.getPosicion().x-velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);
-      this.jugador.setPosicion(this.transform.getPosicion().x-velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);
       this.estadoJugador=StateJugador.MOVIENDO;
     }
     if (upPressed==true){
       this.transform.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y-velocidad*Time.getDeltaTime(frameRate));
-      this.jugador.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y-velocidad*Time.getDeltaTime(frameRate));
       this.estadoJugador=StateJugador.MOVIENDO;
     }
     if (downPressed==true){
       this.transform.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y+velocidad*Time.getDeltaTime(frameRate));
-      this.jugador.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y+velocidad*Time.getDeltaTime(frameRate));
       this.estadoJugador=StateJugador.MOVIENDO;
     }
   
