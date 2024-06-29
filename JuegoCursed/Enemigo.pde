@@ -14,7 +14,7 @@ private class Enemigo implements IVisualizable{
     this.velocidad=velocidad;
     this.direccion=direccion;
     
-    this.collider=new Collider(16.0, this.transform.getPosicion());
+    this.collider=new Collider(20.0, this.transform.getPosicion());
   }
   
   //metodo de dibujo
@@ -23,6 +23,7 @@ private class Enemigo implements IVisualizable{
   enemy.updateAnimacion();
   
   this.mover();
+
   }
   
   //metodo de movimiento
@@ -46,6 +47,10 @@ private class Enemigo implements IVisualizable{
   
   //Verificación si el enemigo choca con jugador
   public void atacaJugador(Jugador jugador){
-    
+    boolean isCollide = this.collider.verificarColision(jugador.getCollider());
+
+    if (isCollide==true) {
+      estado=StateMachine.DERROTADO;
+    }
   }
 }

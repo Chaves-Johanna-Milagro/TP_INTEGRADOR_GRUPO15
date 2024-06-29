@@ -43,11 +43,18 @@ public void draw() {
     fondo.display();
     agua1.display();
     fruta1.display();
+    
     enemigo1.display();
+    enemigo1.atacaJugador(jugador);
+    
     jugador.display();
     break;
 
   case 3:
+    fondo.display();
+    if (keyCode==ENTER) {
+      estado=StateMachine.JUGANDO;
+    }
     break;
 
   case 4:

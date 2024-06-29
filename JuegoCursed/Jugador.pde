@@ -26,7 +26,7 @@ private class Jugador implements IController, IVisualizable{
     this.imagen=loadImage("spritesJugador.png");
     this.estadoJugador=StateJugador.IDLE;//se establece el estado del jugador como "Quieto"
     
-    this.collider=new Collider(16.0, this.transform.getPosicion());
+    this.collider=new Collider(20.0, this.transform.getPosicion());
   }
   
   //metodo de dibujo
@@ -102,7 +102,10 @@ private class Jugador implements IController, IVisualizable{
      this.estadoJugador=est;
    }
    
-   
+   public Collider getCollider() {
+    return this.collider;
+  }
+  
   //Setters y getters de las teclas direccionales 
    public boolean getUpPressed(){
     return this.upPressed;
