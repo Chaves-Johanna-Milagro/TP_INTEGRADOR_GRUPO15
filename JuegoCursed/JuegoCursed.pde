@@ -64,14 +64,18 @@ public void keyPressed() {
 public void keyReleased() {
   if (keyCode==UP) {
     jugador.setUpPressed(false);
+    jugador.setEstado(StateJugador.IDLE);
   }
   if (keyCode==DOWN) {
     jugador.setDownPressed(false);
+    jugador.setEstado(StateJugador.IDLE);
   }
   if (keyCode==RIGHT) {
     jugador.setRightPressed(false);
+    jugador.setEstado(StateJugador.IDLE);
   }
   if (keyCode==LEFT) {
     jugador.setLeftPressed(false);
+    jugador.setEstado(StateJugador.IDLE);
   }
 }

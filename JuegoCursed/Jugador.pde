@@ -4,6 +4,7 @@ private class Jugador implements IController, IVisualizable{
   private Animador jugador;
   private int vida;
   private int puntaje;
+  private PImage imagen;
   
   //Variables de movimiento
   private boolean upPressed;
@@ -21,13 +22,23 @@ private class Jugador implements IController, IVisualizable{
     this.jugador.crearAnimacion("spritesJugador.png"); 
     this.velocidad=velocidad;
     
+    
+    this.imagen=loadImage("spritesJugador.png");
     this.estadoJugador=StateJugador.IDLE;//se establece el estado del jugador como "Quieto"
   }
   
   //metodo de dibujo
   public void display(){
-    jugador.updateAnimacion();
-    
+   
+  
+    switch (this.estadoJugador){
+      case 1:
+        image(this.imagen.get(0,0,32,32), this.transform.getPosicion().x,this.transform.getPosicion().y,50,50);
+        break;
+      case 2:
+        jugador.updateAnimacion();
+        break; 
+    }
     
     this.mover();
   }
@@ -37,18 +48,22 @@ private class Jugador implements IController, IVisualizable{
     if (rightPressed==true){
      this.transform.setPosicion(this.transform.getPosicion().x+velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);//actualizacion posicion del objeto
      this.jugador.setPosicion(this.transform.getPosicion().x+velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);//actualizacion posicion del sprite
+     this.estadoJugador=StateJugador.MOVIENDO;//se cambia el estado del jugador para activar la animacion del sprite
     }
     if (leftPressed==true){
       this.transform.setPosicion(this.transform.getPosicion().x-velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);
       this.jugador.setPosicion(this.transform.getPosicion().x-velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);
+      this.estadoJugador=StateJugador.MOVIENDO;
     }
     if (upPressed==true){
       this.transform.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y-velocidad*Time.getDeltaTime(frameRate));
       this.jugador.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y-velocidad*Time.getDeltaTime(frameRate));
+      this.estadoJugador=StateJugador.MOVIENDO;
     }
     if (downPressed==true){
       this.transform.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y+velocidad*Time.getDeltaTime(frameRate));
       this.jugador.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y+velocidad*Time.getDeltaTime(frameRate));
+      this.estadoJugador=StateJugador.MOVIENDO;
     }
   
   }
@@ -82,6 +97,10 @@ private class Jugador implements IController, IVisualizable{
   //Setters y getters
    public int getVelocidad(){
    return velocidad;}
+   
+   public void setEstado(int est){
+     this.estadoJugador=est;
+   }
    
    
   //Setters y getters de las teclas direccionales 
