@@ -6,6 +6,8 @@ private class Jugador implements IController, IVisualizable{
   private int puntaje;
   private PImage imagen;
   
+  private ArrayList<Agua> agua;
+  
   //Variables de movimiento
   private boolean upPressed;
   private boolean downPressed;
@@ -22,6 +24,7 @@ private class Jugador implements IController, IVisualizable{
     this.jugador.crearAnimacion("spritesJugador.png"); 
     this.velocidad=velocidad;
     
+    this.agua=new ArrayList<Agua>();//inicializa el ArrayList
     
     this.imagen=loadImage("spritesJugador.png");
     this.estadoJugador=StateJugador.IDLE;//se establece el estado del jugador como "Quieto"
@@ -33,7 +36,10 @@ private class Jugador implements IController, IVisualizable{
   public void display(){
    
     this.jugador.setPosicion(this.transform.getPosicion().x,this.transform.getPosicion().y);//actualizacion de la posicion del sprite para que acompañe el movimiento
-  
+    //dibuja el agua
+    for(Agua awita:agua){
+      awita.display();
+    }
     //Dependiendo el estado del jugador, el sprite estara quieto o en movimiento
     switch (this.estadoJugador){
       case 1:
@@ -69,6 +75,10 @@ private class Jugador implements IController, IVisualizable{
   }
   //se utilizara para los movimientos del jugador
   public void readCommand(){
+    //dispara si es que se presiona la tecla espacio
+    if(key==' '){
+      this.disparar(agua);
+    }
     if (keyCode==UP){
       upPressed=true;
     }
@@ -93,8 +103,11 @@ private class Jugador implements IController, IVisualizable{
   }
   
   //le permitira al jugador disparar 
-  public void disparar(Agua agua){
-
+  public void disparar(ArrayList<Agua> agua){
+    
+    agua.add(new Agua(transform.getPosicion().x,transform.getPosicion().y,20));
+    
+    
   }
   
   

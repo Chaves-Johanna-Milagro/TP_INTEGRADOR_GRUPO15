@@ -21,7 +21,6 @@ public void setup() {
   estado=StateMachine.INICIO;
 
   //pruebas de animacion
-  agua1=new Agua(200,200);
   fruta1=new Fruta(100,100);
   enemigo1=new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3));
   jugador=new Jugador(width/2,height/2, 200);
@@ -41,7 +40,6 @@ public void draw() {
   
     //pruebas de dibujo
     fondo.display();
-    agua1.display();
     fruta1.display();
     
     enemigo1.display();

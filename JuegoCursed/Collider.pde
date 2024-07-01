@@ -1,5 +1,5 @@
 private class Collider{
-
+  private Transform transform;
   private float radio;
   private PVector posCentro;
   
@@ -30,4 +30,12 @@ private class Collider{
   public float getRadio() {
     return this.radio;
   }
+  
+  //metodos accesores para la posicion del collider
+  public PVector getPosicion(){
+    return transform.getPosicion();
+ }
+  public void setPosicion(float x, float y){
+    transform.setPosicion(x,y);
+ }
 }
