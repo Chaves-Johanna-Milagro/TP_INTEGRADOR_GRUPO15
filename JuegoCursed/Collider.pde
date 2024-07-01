@@ -4,6 +4,7 @@ private class Collider{
   private PVector posCentro;
   
   public Collider(float radio,PVector posCentro){
+    this.transform=new Transform(posCentro.x,posCentro.y);
     this.radio=radio;
     this.posCentro=posCentro;
   }

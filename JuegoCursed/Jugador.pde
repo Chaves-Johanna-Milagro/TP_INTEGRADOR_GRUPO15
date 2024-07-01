@@ -39,6 +39,7 @@ private class Jugador implements IController, IVisualizable{
     //dibuja el agua
     for(Agua awita:agua){
       awita.display();
+      awita.mover();
     }
     //Dependiendo el estado del jugador, el sprite estara quieto o en movimiento
     switch (this.estadoJugador){
@@ -77,7 +78,7 @@ private class Jugador implements IController, IVisualizable{
   public void readCommand(){
     //dispara si es que se presiona la tecla espacio
     if(key==' '){
-      this.disparar(agua);
+      this.disparar();
     }
     if (keyCode==UP){
       upPressed=true;
@@ -103,13 +104,20 @@ private class Jugador implements IController, IVisualizable{
   }
   
   //le permitira al jugador disparar 
-  public void disparar(ArrayList<Agua> agua){
+  public void disparar(){
     
-    agua.add(new Agua(transform.getPosicion().x,transform.getPosicion().y,20));
-    
-    
+    agua.add(new Agua(transform.getPosicion().x,transform.getPosicion().y,200));
+    for(int i=agua.size()-1;i>0;i--){
+        Agua awita=agua.get(i);
+        
+        //elimina el disparo si se sale del lienzo
+      if(awita.getTransformX()>=width){
+       agua.remove(i);
+     }
+     //prueba respecto a la eliminacion
+     println(agua.size());
+    }
   }
-  
   
   //Setters y getters
    public int getVelocidad(){
@@ -151,5 +159,7 @@ private class Jugador implements IController, IVisualizable{
   public void setLeftPressed(boolean leftPressed){
     this.leftPressed=leftPressed;
   }
+  public ArrayList<Agua> getAgua(){
+  return agua;}
   
 }

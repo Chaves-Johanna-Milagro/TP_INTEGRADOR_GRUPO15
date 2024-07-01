@@ -9,15 +9,15 @@ private class Agua implements IVisualizable{
   public Agua(float x, float y,float velocidad){
     this.transform=new Transform(x,y);
     this.velocidad=velocidad;
-    this.awita=new Animador(x,y,2);//recibe la posicion y el numero de frames
-    this.awita.crearAnimacion("spriteAgua.png"); 
     this.collider=new Collider(20.0,this.transform.getPosicion());
     
   }
   
   //metodo de dibujo
   public void display(){
-   awita.updateAnimacion();
+    this.awita=new Animador(this.transform.getPosicion().x,this.transform.getPosicion().y,2);//recibe la posicion y el numero de frames
+    this.awita.crearAnimacion("spriteAgua.png"); 
+    awita.updateAnimacion();
   }
   
   //movera el agua utilizando el delta time
@@ -39,4 +39,8 @@ private class Agua implements IVisualizable{
   public float getVelocidad(){
   return velocidad;
  }
+ 
+ public float getTransformX(){
+ return transform.getPosicion().x;}
+ 
 }

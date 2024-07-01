@@ -2,7 +2,7 @@
 private Jugador jugador;
 private ArrayList<Enemigo> enemigo;
 private ArrayList<Fruta> fruta;
-private ArrayList<Agua> agua;
+
 private Fondo fondo;
 //Variable para la maquina de estados
 private int estado;
