@@ -41,19 +41,20 @@ public void draw() {
 
     jugador.display();
 
-    //aplica el polimorfismo y dibuja las frutas
-    for (Fruta frutita : fruta) {
+    //aplica el polimorfismo y dibuja las frutas, también se controla la colision con el jugador
+    //no se usa 'for (Fruta frutita : fruta)' ya que dará error al momento de actualizar el tamaño de la lista al comer una fruta
+
+    for (int x=0; x<fruta.size(); x++) {
+      Fruta frutita = fruta.get(x);
       frutita.display();
-      jugador.comer(frutita);//control de colision del jugador con la fruta
+      jugador.comer(frutita);
     }
+
     //muestra de los enemigos
     for (Enemigo eni : enemigo) {
       eni.display();
       eni.atacaJugador(jugador);
     }
-
-
-
     break;
 
   case 3:
@@ -66,6 +67,12 @@ public void draw() {
   case 4:
     println("GANASTE!");
     break;
+  }
+  
+  
+  //condiciones para ganar el nivel
+  if(fruta.size()==0){
+    estado=StateMachine.GANADO;
   }
 }
 
@@ -93,3 +100,8 @@ public void keyReleased() {
     jugador.setEstado(StateJugador.IDLE);
   }
 }
+
+
+public ArrayList<Fruta> getListaFruta() {
+    return fruta;
+  }

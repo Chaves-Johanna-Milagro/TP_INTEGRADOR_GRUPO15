@@ -94,11 +94,17 @@ private class Jugador implements IController, IVisualizable {
   }
 
   //determinara si el jugador consume una fruta
-  public void comer(Fruta fruta) {
-    boolean isCollide = this.collider.verificarColision(fruta.getCollider());
+  public void comer(Fruta comida) {
+    boolean isCollide = this.collider.verificarColision(comida.getCollider());
 
     if (isCollide==true) {
-      estado=StateMachine.GANADO;
+      //se crea una nueva arraylist dentro de comer para respetar el encapsulamiento y no acceder directamente a los valores de fruta
+      ArrayList<Fruta> listaFruta =  new ArrayList<Fruta>();
+      
+      listaFruta=getListaFruta();
+      
+      int posicion = listaFruta.indexOf(comida);
+      listaFruta.remove(posicion);
     }
   }
 
