@@ -7,13 +7,13 @@ private class Fondo implements IVisualizable {
   public Fondo() {  //reduce parte del codigo
     this.transform= new Transform(0, 0);
     pantallaInicio = loadImage("pantallaInicio.png");
-    fondo = loadImage("fondo.png");
+    fondo = loadImage("fondo1.png");
     derrotado = loadImage("derrotado.png");
   }
 
   //metodo de dibujo
   public void display() {
-    image(fondo, this.transform.getPosicion().x, this.transform.getPosicion().y);
+   //image(fondo, this.transform.getPosicion().x, this.transform.getPosicion().y);
 
     //Cambia el fondo según el estado del StateMachine
     switch (estado) {
@@ -21,7 +21,7 @@ private class Fondo implements IVisualizable {
       image(pantallaInicio, this.transform.getPosicion().x, this.transform.getPosicion().y);
       break;
     case 2:
-      image(fondo, this.transform.getPosicion().x, this.transform.getPosicion().y);
+      //image(fondo, this.transform.getPosicion().x, this.transform.getPosicion().y);
       break;
     case 3:
       image(derrotado, this.transform.getPosicion().x, this.transform.getPosicion().y);
@@ -29,5 +29,12 @@ private class Fondo implements IVisualizable {
     case 4:
       break;
     }
+  }
+  //permite que el fondo se desplaze siguiendo al jugador
+  public void seguirMovimiento(Jugador j){
+  float pos=0-j.transform.getPosicion().x;
+  
+   image(fondo,pos,0);  
+   
   }
 }

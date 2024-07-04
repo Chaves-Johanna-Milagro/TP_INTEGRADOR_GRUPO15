@@ -38,7 +38,9 @@ public void draw() {
 
   case 2:  //Jugar primer nivel
     fondo.display();
-
+   //da un efecto de seguimiento de camara hacia los lados
+    fondo.seguirMovimiento(jugador);
+    
     jugador.display();
     //aplica el polimorfismo y dibuja las frutas, también se controla la colision con el jugador
     //no se usa 'for (Fruta frutita : fruta)' ya que dará error al momento de actualizar el tamaño de la lista al comer una fruta
