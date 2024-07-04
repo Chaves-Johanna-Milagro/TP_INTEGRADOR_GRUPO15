@@ -1,3 +1,3 @@
-interface IController{
+interface IController {
   abstract void readCommand();
 }

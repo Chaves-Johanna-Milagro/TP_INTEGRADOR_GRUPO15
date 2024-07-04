@@ -1,3 +1,3 @@
-interface IVisualizable{
+interface IVisualizable {
   abstract void display();
 }

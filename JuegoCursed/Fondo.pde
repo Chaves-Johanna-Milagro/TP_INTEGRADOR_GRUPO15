@@ -5,7 +5,7 @@ private class Fondo implements IVisualizable {
   private PImage derrotado;
 
   public Fondo() {  //reduce parte del codigo
-    this.transform= new Transform(0,0);
+    this.transform= new Transform(0, 0);
     pantallaInicio = loadImage("pantallaInicio.png");
     fondo = loadImage("fondo.png");
     derrotado = loadImage("derrotado.png");
@@ -13,7 +13,7 @@ private class Fondo implements IVisualizable {
 
   //metodo de dibujo
   public void display() {
-    image(fondo,this.transform.getPosicion().x,this.transform.getPosicion().y);
+    image(fondo, this.transform.getPosicion().x, this.transform.getPosicion().y);
 
     //Cambia el fondo según el estado del StateMachine
     switch (estado) {
