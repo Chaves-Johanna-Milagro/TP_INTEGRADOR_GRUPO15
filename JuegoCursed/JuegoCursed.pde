@@ -1,7 +1,7 @@
 //Objetos y listas de objetos
 private Jugador jugador;
-private ArrayList<Enemigo> enemigo;
-private ArrayList<Fruta> fruta;
+private ArrayList<Enemigo> enemigos;
+private ArrayList<Fruta> frutas;
 
 private Fondo fondo;
 //Variable para la maquina de estados
@@ -12,18 +12,18 @@ public void setup() {
   background(0);
 
   fondo=new Fondo();
-  enemigo=new ArrayList<Enemigo>();
+  enemigos=new ArrayList<Enemigo>();
 
-  fruta=new ArrayList<Fruta>();
+  frutas=new ArrayList<Fruta>();
   //añade las frutas dentro del arryList
-  fruta.add(new Zanahoria(200, 200));
-  fruta.add(new Remolacha(400, 400));
+  frutas.add(new Zanahoria(200, 200));
+  frutas.add(new Remolacha(400, 400));
 
   //Se establece el stateMachine en 1 para mostrar la pantalla de inicio
   estado=StateMachine.INICIO;
 
   //pruebas de animacion
-  enemigo.add(new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3)));
+  enemigos.add(new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3)));
   jugador=new Jugador(width/2, height/2, 200);
 }
 
@@ -44,14 +44,14 @@ public void draw() {
     //aplica el polimorfismo y dibuja las frutas, también se controla la colision con el jugador
     //no se usa 'for (Fruta frutita : fruta)' ya que dará error al momento de actualizar el tamaño de la lista al comer una fruta
 
-    for (int x=0; x<fruta.size(); x++) {
-      Fruta frutita = fruta.get(x);
+    for (int x=0; x<frutas.size(); x++) {
+      Fruta frutita = frutas.get(x);
       frutita.display();
       jugador.comer(frutita);
     }
 
     //muestra de los enemigos
-    for (Enemigo eni : enemigo) {
+    for (Enemigo eni : enemigos) {
       eni.display();
       eni.atacaJugador(jugador);
     }
@@ -71,7 +71,7 @@ public void draw() {
   
   
   //condiciones para ganar el nivel
-  if(fruta.size()==0){
+  if(frutas.size()==0){
     estado=StateMachine.GANADO;
   }
 }
@@ -103,5 +103,5 @@ public void keyReleased() {
 
 
 public ArrayList<Fruta> getListaFruta() {
-    return fruta;
+    return frutas;
   }

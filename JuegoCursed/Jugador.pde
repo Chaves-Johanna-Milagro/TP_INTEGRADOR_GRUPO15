@@ -120,8 +120,6 @@ private class Jugador implements IController, IVisualizable {
       if (awita.getTransformX()>=width) {
         agua.remove(i);
       }
-      //prueba respecto a la eliminacion
-      println(agua.size());
     }
   }
 
