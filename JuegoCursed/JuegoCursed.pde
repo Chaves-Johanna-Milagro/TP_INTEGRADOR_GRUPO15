@@ -7,8 +7,6 @@ private Fondo fondo;
 //Variable para la maquina de estados
 private int estado;
 //se utilizaron para probar la animacion
-private Agua agua1;
-private Fruta fruta1;
 private Enemigo enemigo1;
 
 public void setup() {
@@ -16,12 +14,16 @@ public void setup() {
   background(0);
 
   fondo=new Fondo();
+  
+  fruta=new ArrayList<Fruta>();
+ //añade las frutas dentro del arryList
+  fruta.add(new Zanahoria(200,200));
+  fruta.add(new Remolacha(400,400));
 
   //Se establece el stateMachine en 1 para mostrar la pantalla de inicio
   estado=StateMachine.INICIO;
 
   //pruebas de animacion
-  fruta1=new Fruta(100,100);
   enemigo1=new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3));
   jugador=new Jugador(width/2,height/2, 200);
 }
@@ -40,13 +42,16 @@ public void draw() {
   
     //pruebas de dibujo
     fondo.display();
-    fruta1.display();
+//aplica el polimorfismo y dibuja las frutas
+    for(Fruta frutita:fruta){
+    frutita.display();
+  }
     
     enemigo1.display();
     enemigo1.atacaJugador(jugador);
     
     jugador.display();
-    jugador.comer(fruta1);
+    //jugador.comer(fruta1);
     break;
 
   case 3:
