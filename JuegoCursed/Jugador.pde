@@ -103,8 +103,8 @@ private class Jugador implements IController, IVisualizable {
       
       listaFruta=getListaFruta();
       
-      int posicion = listaFruta.indexOf(comida);
-      listaFruta.remove(posicion);
+      int posicion = listaFruta.indexOf(comida);//obtiene la posicion en la lista de la fruta colisionada
+      listaFruta.remove(posicion);//elimina dicha fruta
     }
   }
 

@@ -51,4 +51,8 @@ private class Enemigo implements IVisualizable {
       estado=StateMachine.DERROTADO;
     }
   }
+  
+  public Collider getCollider() {
+    return this.collider;
+  }
 }

@@ -17,6 +17,7 @@ private class Agua implements IVisualizable {
     this.awita=new Animador(this.transform.getPosicion().x, this.transform.getPosicion().y, 2);//recibe la posicion y el numero de frames
     this.awita.crearAnimacion("spriteAgua.png");
     awita.updateAnimacion();
+    
   }
 
   //movera el agua utilizando el delta time
@@ -30,6 +31,25 @@ private class Agua implements IVisualizable {
     PVector pos=transform.getPosicion();
     collider.setPosicion(pos.x, pos.y);
   }
+  
+  public void destruyeEnemigo(Enemigo victima){
+  
+    boolean isCollide = this.collider.verificarColision(victima.getCollider());
+
+    if (isCollide==true) {
+
+      ArrayList<Enemigo> listaEnemigo =  new ArrayList<Enemigo>();
+      
+      listaEnemigo=getListaEnemigo();
+      
+      int posicion = listaEnemigo.indexOf(victima);//obtiene la posicion en la lista del enemigo colisionado
+      listaEnemigo.remove(posicion);//elimina dicho enemigo
+    }
+    
+  }
+  
+  
+  
   //getters y setters
   public Collider getCollider() {
     return collider;

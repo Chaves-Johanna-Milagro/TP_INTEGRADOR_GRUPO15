@@ -40,7 +40,6 @@ public void draw() {
     fondo.display();
 
     jugador.display();
-
     //aplica el polimorfismo y dibuja las frutas, también se controla la colision con el jugador
     //no se usa 'for (Fruta frutita : fruta)' ya que dará error al momento de actualizar el tamaño de la lista al comer una fruta
 
@@ -51,9 +50,16 @@ public void draw() {
     }
 
     //muestra de los enemigos
-    for (Enemigo eni : enemigos) {
+   for (int y=0; y<enemigos.size(); y++) {
+     Enemigo eni = enemigos.get(y);
       eni.display();
       eni.atacaJugador(jugador);
+      
+      //control de colisión de todas las agua que estén en pantalla
+      for(Agua awa : jugador.getAgua()){
+         awa.destruyeEnemigo(eni);
+      }
+   
     }
     break;
 
@@ -70,8 +76,8 @@ public void draw() {
   }
   
   
-  //condiciones para ganar el nivel
-  if(frutas.size()==0){
+  //condiciones para ganar el nivel: comer todas las frutas y eliminar todos los enemigos
+  if(frutas.size()==0 && enemigos.size()==0){
     estado=StateMachine.GANADO;
   }
 }
@@ -105,3 +111,6 @@ public void keyReleased() {
 public ArrayList<Fruta> getListaFruta() {
     return frutas;
   }
+ public ArrayList<Enemigo> getListaEnemigo() {
+   return enemigos;
+ }
