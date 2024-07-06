@@ -6,29 +6,35 @@ private ArrayList<Fruta> frutas;
 private Fondo fondo;
 //Variable para la maquina de estados
 private int estado;
+//Variable para la fuente de texto
+private PFont font;
 
 public void setup() {
   size(600, 600);
   background(0);
-
+  
+  //Se establece la fuente del texto
+  font=createFont("bahnschrift.ttf", 20);
+  textFont(font);
+  
   fondo=new Fondo();
   enemigos=new ArrayList<Enemigo>();
-
+  //dibuja aleatoreamente 6 enemigos
+    for(int i=0;i<6;i++){
+      enemigos.add(new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3)));
+    }
   frutas=new ArrayList<Fruta>();
   //añade las frutas dentro del arryList
   //dibuja aleatoriamente 12 frutas
   for(int j=0;j<6;j++){
-    frutas.add(new Zanahoria(random(-20, width+20), random(-20, height+20)));
-    frutas.add(new Remolacha(random(-20, width+20), random(-20, height+20)));
+    frutas.add(new Zanahoria(random(20, width-20), random(20, height-20)));
+    frutas.add(new Remolacha(random(20, width-20), random(20, height-20)));
   }
   //Se establece el stateMachine en 1 para mostrar la pantalla de inicio
   estado=StateMachine.INICIO;
 
   //pruebas de animacion
-  //dibuja aleatoreamente 6 enemigos
-  for(int i=0;i<6;i++){
-    enemigos.add(new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3)));
-  }
+  
   jugador=new Jugador(width/2, height/2, 200);
 }
 
@@ -67,6 +73,11 @@ public void draw() {
          awa.destruyeEnemigo(eni);
       }
    
+    //muestra de la cantidad de enemigos y frutas
+    stroke(#ffffff);
+    strokeWeight(10);
+    text("Enemigos restantes: "+enemigos.size(),20,30);
+    text("Frutas restantes: "+frutas.size(),20,50);
     }
     break;
 
@@ -84,7 +95,7 @@ public void draw() {
   
   
   //condiciones para ganar el nivel: comer todas las frutas y eliminar todos los enemigos
-  if(frutas.size()==0 && enemigos.size()==0){
+  if(frutas.size()<=0 && enemigos.size()<=0){
     estado=StateMachine.GANADO;
   }
 }
@@ -117,7 +128,14 @@ public void keyReleased() {
 
 public ArrayList<Fruta> getListaFruta() {
     return frutas;
-  }
+  }  
+public void setListaFruta(ArrayList<Fruta> frutas){
+  this.frutas=frutas;
+}  
+  
  public ArrayList<Enemigo> getListaEnemigo() {
    return enemigos;
+ }
+ public void setListaEnemigo(ArrayList<Enemigo> enemigos){
+   this.enemigos=enemigos;
  }

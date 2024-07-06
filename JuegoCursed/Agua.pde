@@ -44,6 +44,8 @@ private class Agua implements IVisualizable {
       
       int posicion = listaEnemigo.indexOf(victima);//obtiene la posicion en la lista del enemigo colisionado
       listaEnemigo.remove(posicion);//elimina dicho enemigo
+      
+      setListaEnemigo(listaEnemigo);//se envia la lista modificada a juegocursed
     }
     
   }
