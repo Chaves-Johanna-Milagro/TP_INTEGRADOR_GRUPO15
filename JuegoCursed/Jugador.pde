@@ -14,6 +14,10 @@ private class Jugador implements IController, IVisualizable {
   private boolean rightPressed;
   private boolean leftPressed;
   private int velocidad;
+  
+  //variables de audio
+  private AudioPlayer comer;
+  private AudioPlayer disparo;
 
   private int estadoJugador;//variable para la maquina de estados del jugador
 
@@ -30,6 +34,10 @@ private class Jugador implements IController, IVisualizable {
     this.estadoJugador=StateJugador.IDLE;//se establece el estado del jugador como "Quieto"
 
     this.collider=new Collider(20.0, this.transform.getPosicion());
+    
+    //carga de los archivos de audio
+    this.comer = minim.loadFile("comer.wav");
+    this.disparo = minim.loadFile("disparo.wav");
   }
 
   //metodo de dibujo
@@ -56,7 +64,7 @@ private class Jugador implements IController, IVisualizable {
 
   //Movimiento del jugador controlado por los inputs
   public void mover() {
-    if (rightPressed==true) {
+    if (rightPressed==true) {  
       this.transform.setPosicion(this.transform.getPosicion().x+velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);//actualizacion posicion del objeto
       this.estadoJugador=StateJugador.MOVIENDO;//se cambia el estado del jugador para activar la animacion del sprite
     }
@@ -77,6 +85,8 @@ private class Jugador implements IController, IVisualizable {
   public void readCommand() {
     //dispara si es que se presiona la tecla espacio
     if (key==' ') {
+      disparo.rewind();//se reproduce el sonido al comer
+      disparo.play();
       this.disparar();
     }
     if (keyCode==UP) {
@@ -98,6 +108,10 @@ private class Jugador implements IController, IVisualizable {
     boolean isCollide = this.collider.verificarColision(comida.getCollider());
 
     if (isCollide==true) {
+      
+      comer.rewind();//se reproduce el sonido al comer
+      comer.play();
+      
       //se crea una nueva arraylist dentro de comer para respetar el encapsulamiento y no acceder directamente a los valores de fruta
       ArrayList<Fruta> listaFruta =  new ArrayList<Fruta>();
       

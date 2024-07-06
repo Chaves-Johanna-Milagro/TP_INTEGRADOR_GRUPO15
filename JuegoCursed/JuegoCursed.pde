@@ -1,3 +1,10 @@
+//Uso de la biblioteca minim para usar audio
+import ddf.minim.*;
+
+private Minim minim;
+//variables de audio
+private AudioPlayer comenzarJuego;
+
 //Objetos y listas de objetos
 private Jugador jugador;
 private ArrayList<Enemigo> enemigos;
@@ -12,6 +19,10 @@ private PFont font;
 public void setup() {
   size(600, 600);
   background(0);
+  
+  minim = new Minim(this);
+  //carga de los archivos de audio
+  comenzarJuego = minim.loadFile("comenzarJuego.wav");
   
   //Se establece la fuente del texto
   font=createFont("bahnschrift.ttf", 20);
@@ -43,6 +54,8 @@ public void draw() {
   case 1:  //Pantalla de inicio del juego
     fondo.display();
     if (keyCode==ENTER) {
+      comenzarJuego.rewind();//se reproduce un sonido al empezar el juego
+      comenzarJuego.play();
       estado=StateMachine.JUGANDO;
     }
     break;

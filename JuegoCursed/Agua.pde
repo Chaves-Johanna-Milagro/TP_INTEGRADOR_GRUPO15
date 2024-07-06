@@ -4,12 +4,17 @@ private class Agua implements IVisualizable {
   private Animador awita;
   private int daño;
   private float velocidad;
+  
+  private AudioPlayer enemigoDerrotado;//variable de audio cuando un enemigo sea impactado
 
   //constructor
   public Agua(float x, float y, float velocidad) {
     this.transform=new Transform(x, y);
     this.velocidad=velocidad;
     this.collider=new Collider(20.0, this.transform.getPosicion());
+    
+    //carga archivo de audio
+    this.enemigoDerrotado = minim.loadFile("enemigoDerrotado.wav");
   }
 
   //metodo de dibujo
@@ -37,7 +42,10 @@ private class Agua implements IVisualizable {
     boolean isCollide = this.collider.verificarColision(victima.getCollider());
 
     if (isCollide==true) {
-
+      
+      enemigoDerrotado.rewind();//se reproduce el sonido del enemigo impactado
+      enemigoDerrotado.play();
+      
       ArrayList<Enemigo> listaEnemigo =  new ArrayList<Enemigo>();
       
       listaEnemigo=getListaEnemigo();
