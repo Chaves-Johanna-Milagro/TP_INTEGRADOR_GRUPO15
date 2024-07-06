@@ -23,7 +23,7 @@ private class Agua implements IVisualizable {
   //movera el agua utilizando el delta time
   public void mover() {
     PVector pos=transform.getPosicion();
-    transform.setPosicion(pos.x+this.velocidad*Time.getDeltaTime(frameRate), pos.y);
+    transform.setPosicion(pos.x+this.velocidad*Time.getDeltaTime(frameRate), pos.y); 
     this.updateCollider();
   }
   //actualizara el movimiento del agua

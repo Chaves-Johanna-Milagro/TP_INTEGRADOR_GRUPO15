@@ -16,14 +16,19 @@ public void setup() {
 
   frutas=new ArrayList<Fruta>();
   //añade las frutas dentro del arryList
-  frutas.add(new Zanahoria(200, 200));
-  frutas.add(new Remolacha(400, 400));
-
+  //dibuja aleatoriamente 12 frutas
+  for(int j=0;j<6;j++){
+    frutas.add(new Zanahoria(random(-20, width+20), random(-20, height+20)));
+    frutas.add(new Remolacha(random(-20, width+20), random(-20, height+20)));
+  }
   //Se establece el stateMachine en 1 para mostrar la pantalla de inicio
   estado=StateMachine.INICIO;
 
   //pruebas de animacion
-  enemigos.add(new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3)));
+  //dibuja aleatoreamente 6 enemigos
+  for(int i=0;i<6;i++){
+    enemigos.add(new Enemigo(random(20, width-20), random(20, height-20), 200, (int)random(1, 3)));
+  }
   jugador=new Jugador(width/2, height/2, 200);
 }
 
