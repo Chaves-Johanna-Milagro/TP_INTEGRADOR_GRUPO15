@@ -30,13 +30,13 @@ private class Enemigo implements IVisualizable {
 
     //Dependiendo la direccion el enemigo se moverá hacia los bordes de la pantalla y rebotará
     if (this.direccion==1) {
-      if (this.transform.getPosicion().x > width-32 || this.transform.getPosicion().x < 0) {
+      if (this.transform.getPosicion().x > (width*2)-32 || this.transform.getPosicion().x < -width) {
         this.velocidad = -this.velocidad;
       }
       this.transform.setPosicion(this.transform.getPosicion().x+=this.velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);
     }
     if (this.direccion==2) {
-      if (this.transform.getPosicion().y > height-32 || this.transform.getPosicion().y < 0) {
+      if (this.transform.getPosicion().y > (height*2)-32 || this.transform.getPosicion().y < -height) {
         this.velocidad = -this.velocidad;
       }
       this.transform.setPosicion(this.transform.getPosicion().x, this.transform.getPosicion().y+=this.velocidad*Time.getDeltaTime(frameRate));

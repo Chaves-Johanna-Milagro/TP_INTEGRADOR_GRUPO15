@@ -32,9 +32,10 @@ private class Fondo implements IVisualizable {
   }
   //permite que el fondo se desplaze siguiendo al jugador
   public void seguirMovimiento(Jugador j){
-  float pos=0-j.transform.getPosicion().x;
+  float posX=0-j.transform.getPosicion().x;
+  float posY=0-j.transform.getPosicion().y;
   
-   image(fondo,pos,0);  
-   
+   image(fondo,posX,posY);  
+  
   }
 }
