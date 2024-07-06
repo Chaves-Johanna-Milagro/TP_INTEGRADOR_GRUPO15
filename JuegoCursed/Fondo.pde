@@ -3,12 +3,14 @@ private class Fondo implements IVisualizable {
   private PImage pantallaInicio;
   private PImage fondo;
   private PImage derrotado;
+  private PImage ganado;
 
   public Fondo() {  //reduce parte del codigo
     this.transform= new Transform(0, 0);
     pantallaInicio = loadImage("pantallaInicio.png");
     fondo = loadImage("fondo1.png");
     derrotado = loadImage("derrotado.png");
+    ganado = loadImage("ganado.png");
   }
 
   //metodo de dibujo
@@ -27,6 +29,7 @@ private class Fondo implements IVisualizable {
       image(derrotado, this.transform.getPosicion().x, this.transform.getPosicion().y);
       break;
     case 4:
+      image(ganado, this.transform.getPosicion().x, this.transform.getPosicion().y);
       break;
     }
   }

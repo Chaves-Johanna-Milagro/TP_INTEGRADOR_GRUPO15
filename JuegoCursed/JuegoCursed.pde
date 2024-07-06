@@ -73,7 +73,7 @@ public void draw() {
     break;
 
   case 4:
-    println("GANASTE!");
+    fondo.display();
     break;
   }
   
