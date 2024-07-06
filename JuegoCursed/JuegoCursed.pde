@@ -4,6 +4,7 @@ import ddf.minim.*;
 private Minim minim;
 //variables de audio
 private AudioPlayer comenzarJuego;
+private AudioPlayer victoria;
 
 //Objetos y listas de objetos
 private Jugador jugador;
@@ -23,6 +24,7 @@ public void setup() {
   minim = new Minim(this);
   //carga de los archivos de audio
   comenzarJuego = minim.loadFile("comenzarJuego.wav");
+  victoria = minim.loadFile("victoria.wav");
   
   //Se establece la fuente del texto
   font=createFont("bahnschrift.ttf", 20);
@@ -97,11 +99,14 @@ public void draw() {
   case 3:
     fondo.display();
     if (keyCode==ENTER) {
+      comenzarJuego.rewind();//se reproduce un sonido al empezar el juego
+      comenzarJuego.play();
       estado=StateMachine.JUGANDO;
     }
     break;
 
   case 4:
+    victoria.play();//se reproduce audio al completar el nivel
     fondo.display();
     break;
   }
@@ -152,3 +157,7 @@ public void setListaFruta(ArrayList<Fruta> frutas){
  public void setListaEnemigo(ArrayList<Enemigo> enemigos){
    this.enemigos=enemigos;
  }
+ 
+public int getEstado(){
+  return this.estado;
+}
