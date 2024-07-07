@@ -144,7 +144,7 @@ private class Jugador implements IController, IVisualizable {
   //le permitira al jugador disparar
   public void disparar() {
 
-    agua.add(new Agua(transform.getPosicion().x, transform.getPosicion().y, 200));
+    agua.add(new Agua(transform.getPosicion().x, transform.getPosicion().y, 400));
     for (int i=agua.size()-1; i>0; i--) {
       Agua awita=agua.get(i);
 

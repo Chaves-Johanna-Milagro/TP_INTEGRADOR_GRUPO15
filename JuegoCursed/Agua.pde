@@ -2,7 +2,6 @@ private class Agua implements IVisualizable {
   private Transform transform;
   private Collider collider;
   private Animador awita;
-  private int daño;
   private float velocidad;
   
   private AudioPlayer enemigoDerrotado;//variable de audio cuando un enemigo sea impactado

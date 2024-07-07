@@ -45,8 +45,6 @@ public void setup() {
   }
   //Se establece el stateMachine en 1 para mostrar la pantalla de inicio
   estado=StateMachine.INICIO;
-
-  //pruebas de animacion
   
   jugador=new Jugador(width/2, height/2, 200);
 }
@@ -87,13 +85,12 @@ public void draw() {
       for(Agua awa : jugador.getAgua()){
          awa.destruyeEnemigo(eni);
       }
-   
+    }
     //muestra de la cantidad de enemigos y frutas
     stroke(#ffffff);
     strokeWeight(10);
     text("Enemigos restantes: "+enemigos.size(),20,30);
     text("Frutas restantes: "+frutas.size(),20,50);
-    }
     break;
 
   case 3:
