@@ -38,7 +38,8 @@ private class Fondo implements IVisualizable {
   float posX=0-j.transform.getPosicion().x;
   float posY=0-j.transform.getPosicion().y;
   
+   if(posX<width*2 || posY<height*2 || posX>-width || posY>-height){
    image(fondo,posX,posY);  
-  
+   }
   }
 }

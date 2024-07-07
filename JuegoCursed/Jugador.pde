@@ -62,21 +62,37 @@ private class Jugador implements IController, IVisualizable {
 
   //Movimiento del jugador controlado por los inputs
   public void mover() {
+    //reducen algo de codigo y ayudan a establecer los limites de movimiento
+    PVector pos=this.transform.getPosicion(); 
+    
+    float right=pos.x+velocidad*Time.getDeltaTime(frameRate);
+    float left=pos.x-velocidad*Time.getDeltaTime(frameRate);
+    float up=pos.y-velocidad*Time.getDeltaTime(frameRate);
+    float down=pos.y+velocidad*Time.getDeltaTime(frameRate);
+    
     if (rightPressed==true) {
-      this.transform.setPosicion(this.transform.getPosicion().x+velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);//actualizacion posicion del objeto
-      this.estadoJugador=StateJugador.MOVIENDO;//se cambia el estado del jugador para activar la animacion del sprite
+      if(right<width-40){
+         this.transform.setPosicion(right, pos.y);//actualizacion posicion del objeto
+         this.estadoJugador=StateJugador.MOVIENDO;//se cambia el estado del jugador para activar la animacion del sprite
+      }
     }
     if (leftPressed==true) {
-      this.transform.setPosicion(this.transform.getPosicion().x-velocidad*Time.getDeltaTime(frameRate), this.transform.getPosicion().y);
-      this.estadoJugador=StateJugador.MOVIENDO;
+      if(left>0){
+         this.transform.setPosicion(left, pos.y);
+         this.estadoJugador=StateJugador.MOVIENDO;
+      }
     }
     if (upPressed==true) {
-      this.transform.setPosicion(this.transform.getPosicion().x, this.transform.getPosicion().y-velocidad*Time.getDeltaTime(frameRate));
-      this.estadoJugador=StateJugador.MOVIENDO;
+      if(up>0){
+         this.transform.setPosicion(pos.x, up);
+         this.estadoJugador=StateJugador.MOVIENDO;
+      }
     }
     if (downPressed==true) {
-      this.transform.setPosicion(this.transform.getPosicion().x, this.transform.getPosicion().y+velocidad*Time.getDeltaTime(frameRate));
-      this.estadoJugador=StateJugador.MOVIENDO;
+      if(down<height-40){
+         this.transform.setPosicion(pos.x, down);
+         this.estadoJugador=StateJugador.MOVIENDO;
+      }
     }
   }
   //se utilizara para los movimientos del jugador
